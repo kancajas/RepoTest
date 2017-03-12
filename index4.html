@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Javascript</title>
+	<style>
+		ul{
+			list-style-position: inside;
+			padding-left:0;
+		}
+		
+	</style>
+	
+</head>
+<body>
+    <h1 id="headline">Click To Change</h1>
+    <button>Button</button>
+    <ul id="ulList">
+    	<li>First Item</li>
+    	<li>Second Item</li>
+    	<li>3rd Item</li>
+    	<li>4th Item</li>
+    </ul>
+    <p id="test"></p>
+
+    <script>
+    
+		var liList = document.getElementById("ulList").getElementsByTagName("li");
+
+		for (let i=0;i<liList.length;i++){
+			liList[i].addEventListener("click", function(){
+				document.getElementById("headline").innerHTML = liList[i].innerHTML;
+			});
+		}		
+
+
+	</script>
+</body>
+</html>
