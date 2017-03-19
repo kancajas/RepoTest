@@ -7,13 +7,15 @@
 			list-style-position: inside;
 			padding-left:0;
 		}
-		
+		.active{
+			background-color:#fcfcfc;
+		}
 	</style>
 	
 </head>
 <body>
     <h1 id="headline">Click To Change</h1>
-    <button>Button</button>
+    <button id="bt">Button</button>
     <ul id="ulList">
     	<li>First Item</li>
     	<li>Second Item</li>
@@ -23,14 +25,38 @@
     <p id="test"></p>
 
     <script>
-    
+    	var ul = document.getElementById("ulList");
 		var liList = document.getElementById("ulList").getElementsByTagName("li");
+		
 
-		for (let i=0;i<liList.length;i++){
+		ul.addEventListener("click",function(e){
+			if (e.target.nodeName = "li"){
+				NodeList.prototype.map = Array.prototype.map;
+				document.querySelectorAll("#ulList li").map(function(node, index){
+						node.classList.remove("active");
+				});	
+				//document.querySelectorAll("#ulList li").classList.removeClass("active");
+				e.target.classList.add("active");
+			}
+		})
+
+
+		/*for (let i=0;i<liList.length;i++){
 			liList[i].addEventListener("click", function(){
 				document.getElementById("headline").innerHTML = liList[i].innerHTML;
 			});
-		}		
+		}*/		
+
+		var btHandler = (function(){
+			 var liCnt = 0;
+             return function() { 
+             			ul.innerHTML += "<li>Something New " + liCnt + " </li>";
+             			liCnt+=1;
+             		}
+		})();
+
+		var bt = document.getElementById("bt").addEventListener("click",btHandler);
+
 
 
 	</script>

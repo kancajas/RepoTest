@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Technical Test</title>
+</head>
+<body>
+	<form name="dataForm">
+		Loan Amount: 
+		<input name="loan" type="text" default="Loan Amount">
+		Interest Rate: 
+		<input name="interest" type="text" default="Interest Rate">
+		Term: 
+		<input name="term" type="text" default="Number of Repayments">
+
+	</form>
+	<br>
+	<button onclick="periodicPayment()">Calculate</button>
+	<p><span id="result"></span></p>
+
+
+
+	<script>
+		function periodicPayment(){
+			let loanAmount = document.forms["dataForm"]["loan"].value;
+
+			let interest = document.forms["dataForm"]["interest"].value;;
+
+			let term = document.forms["dataForm"]["term"].value;
+
+			let a = interest * (Math.pow((1+interest),term));
+
+			let b = Math.pow(1+interest,term)-1;
+			let repayment = loanAmount*(a/b);
+			document.querySelector("#result").innerHTML = "Monthly Repayment: " + repayment;
+		}
+	</script>
+
+</body>
+</html>
